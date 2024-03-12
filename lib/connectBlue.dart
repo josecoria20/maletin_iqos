@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -13,6 +14,7 @@ class ConnectBlue extends StatefulWidget {
 class _ConnectBlueState extends State<ConnectBlue> {
   StreamSubscription<List<ScanResult>>? scanSubscription;
   BluetoothDevice? device;
+  String trama = '-1,2,200,255,70,4';
 
   @override
   void initState() {
@@ -24,13 +26,14 @@ class _ConnectBlueState extends State<ConnectBlue> {
     scanSubscription = FlutterBluePlus.onScanResults.listen((results) async {
       for (ScanResult result in results) {
         print('Escanenado');
-        if (result.device.name == 'ESP32LF') {
+        if (result.device.advName == 'Test2') {
           try {
             scanSubscription?.cancel();
             await FlutterBluePlus.stopScan();
             device = result.device;
             // Call connect() only once
             await device?.connect();
+            sendData();
             print('Conectado a ${device?.advName}');
             setState(() {}); // Trigger a UI update
             break;
@@ -44,9 +47,25 @@ class _ConnectBlueState extends State<ConnectBlue> {
 
     await FlutterBluePlus.adapterState.where((val) => val == BluetoothAdapterState.on).first;
     await FlutterBluePlus.startScan(
-      withNames: ["ESP32LF"],
+      withNames: ["Test2"],
       timeout: Duration(seconds: 30),
     );
+  }
+  void sendData() async {
+    List<BluetoothService> services = await device!.discoverServices();
+    services.forEach((service) async {
+        // Reads all characteristics
+      var characteristics = service.characteristics;
+      for(BluetoothCharacteristic c in characteristics) {
+          if (c.properties.read) {
+              List<int> value = await c.read();
+              final receivedData = String.fromCharCodes(value);
+              print('Se recibio: $receivedData');
+              await c.write(utf8.encode(trama));
+              print('se mando: ${utf8.encode(trama)}');
+          }
+      }
+    });
   }
 
   @override
