@@ -1,4 +1,4 @@
-package com.example.maletin_iqos
+package com.example.iqos_develop
 
 import io.flutter.embedding.android.FlutterActivity
 

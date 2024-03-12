@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "maletin_iqos" "\0"
+            VALUE "FileDescription", "iqos_develop" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "maletin_iqos" "\0"
+            VALUE "InternalName", "iqos_develop" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "maletin_iqos.exe" "\0"
-            VALUE "ProductName", "maletin_iqos" "\0"
+            VALUE "OriginalFilename", "iqos_develop.exe" "\0"
+            VALUE "ProductName", "iqos_develop" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

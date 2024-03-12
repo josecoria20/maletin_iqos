@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:maletin_iqos/connectBlue.dart';
-import 'package:maletin_iqos/test.dart';
+import 'package:iqos_develop/connectBlue.dart';
+import 'package:iqos_develop/test.dart';
 
 
 void main() {

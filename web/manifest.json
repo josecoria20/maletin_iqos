@@ -1,6 +1,6 @@
 {
-    "name": "maletin_iqos",
-    "short_name": "maletin_iqos",
+    "name": "iqos_develop",
+    "short_name": "iqos_develop",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
