@@ -24,7 +24,7 @@ class _ConnectBlueState extends State<ConnectBlue> {
     scanSubscription = FlutterBluePlus.onScanResults.listen((results) async {
       for (ScanResult result in results) {
         print('Escanenado');
-        if (result.device.name == 'SpectrumCenefa') {
+        if (result.device.name == 'ESP32LF') {
           try {
             scanSubscription?.cancel();
             await FlutterBluePlus.stopScan();
@@ -44,7 +44,7 @@ class _ConnectBlueState extends State<ConnectBlue> {
 
     await FlutterBluePlus.adapterState.where((val) => val == BluetoothAdapterState.on).first;
     await FlutterBluePlus.startScan(
-      withNames: ["SpectrumCenefa"],
+      withNames: ["ESP32LF"],
       timeout: Duration(seconds: 30),
     );
   }
