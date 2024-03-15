@@ -14,6 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-    return const MaterialApp(debugShowCheckedModeBanner: false , home: ConnectBlue());
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: const Color.fromRGBO(22, 114, 127, 1.0), // Color de la AppBar
+      ),
+      debugShowCheckedModeBanner: false , home: const Test(),
+    );
   }
 }

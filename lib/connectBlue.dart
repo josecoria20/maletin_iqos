@@ -61,8 +61,6 @@ class _ConnectBlueState extends State<ConnectBlue> {
               List<int> value = await c.read();
               final receivedData = String.fromCharCodes(value);
               print('Se recibio: $receivedData');
-              await c.write(utf8.encode(trama));
-              print('se mando: ${utf8.encode(trama)}');
           }
       }
     });
