@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 class ConnectBlue extends StatefulWidget {
@@ -48,7 +49,7 @@ class _ConnectBlueState extends State<ConnectBlue> {
     await FlutterBluePlus.adapterState.where((val) => val == BluetoothAdapterState.on).first;
     await FlutterBluePlus.startScan(
       withNames: ["Test2"],
-      timeout: Duration(seconds: 30),
+      timeout: const Duration(seconds: 1500),
     );
   }
   void sendData() async {
@@ -74,7 +75,9 @@ class _ConnectBlueState extends State<ConnectBlue> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Conexión automática'),
