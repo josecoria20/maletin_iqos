@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maletin_iqos/connectBlue.dart';
-import 'package:maletin_iqos/test.dart';
 
 
 void main() {
@@ -21,33 +20,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const Scaffold(
         body: Center(
-          child: Start(),
+          child: ConnectBlue()
         ),
       ),
-    );
-  }
-}
-
-class Start extends StatefulWidget {
-  const Start({super.key});
-
-  @override
-  State<Start> createState() => _StartState();
-}
-
-class _StartState extends State<Start> {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => const Test(),
-        ),
-        (route) => false);
-      },
-      child: const Text('Iniciar'),
     );
   }
 }

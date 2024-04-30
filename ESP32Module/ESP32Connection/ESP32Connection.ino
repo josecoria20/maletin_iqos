@@ -2,8 +2,8 @@
 #include <ArduinoBLE.h> //Libreria de Bluetoooth 5.0
 
 #define L_BLE      2
-int fsrAnalogPin1 = 32;
-int fsrAnalogPin2 = 33;
+int fsrAnalogPin1 = 33;
+int fsrAnalogPin2 = 34;
 int fsrReading1;
 int fsrReading2;
 String datosAEnviarFSR1 = "2";
@@ -14,7 +14,7 @@ bool sentFSR1 = false;
 bool sentFSR2 = false;
 
 unsigned long lastSendTime = 0;
-unsigned long sendInterval = 1000; // Intervalo de tiempo en milisegundos
+unsigned long sendInterval = 2500; // Intervalo de tiempo en milisegundos
 
 // ************ CONSTANTES GLOBALES ************
 bool standbyMode = true;
@@ -138,7 +138,5 @@ void iniciarBLE() {
   BLE.advertise(); // Inicia el Advertising
   Serial.println("BLE LED Peripheral"); // Se imprime en monitor la correcta inicializacion
 }
-
-
 
 

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'package:maletin_iqos/main.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoMain extends StatefulWidget {
@@ -25,7 +24,7 @@ class _VideoMainState extends State<VideoMain> {
   @override
   void initState() {
     // Inicializa el controlador de video y carga el video desde la ruta de los assets
-    controller = VideoPlayerController.asset('assets/video/8.mp4');
+    controller = VideoPlayerController.asset('assets/video/loop.mp4');
     initializeVideoPlayerFuture = controller.initialize().then((_) {
       controller.play();
       controller.setLooping(true);
@@ -80,7 +79,7 @@ Future<void> _readCharacteristic() async {
         isPlayVidOne = true;
         setState(() {
           controller.dispose();
-          controller = VideoPlayerController.asset('assets/video/9.mp4');
+          controller = VideoPlayerController.asset('assets/video/izquierda.mp4');
           initializeVideoPlayerFuture = controller.initialize().then((_) {
             controller.play();
           });
@@ -98,7 +97,7 @@ Future<void> _readCharacteristic() async {
         if(controller.value.position == controller.value.duration) {
           controller.dispose();
           setState(() {
-            controller = VideoPlayerController.asset('assets/video/8.mp4');
+            controller = VideoPlayerController.asset('assets/video/loop.mp4');
             initializeVideoPlayerFuture = controller.initialize().then((_) {
               controller.play();
               controller.setLooping(true);
@@ -115,7 +114,7 @@ Future<void> _readCharacteristic() async {
         isPlayVidTwo = true;
         setState(() {
           controller.dispose();
-          controller = VideoPlayerController.asset('assets/video/10.mp4');
+          controller = VideoPlayerController.asset('assets/video/derecha.mp4');
           initializeVideoPlayerFuture = controller.initialize().then((_) {
             controller.play();
           });
@@ -133,7 +132,7 @@ Future<void> _readCharacteristic() async {
         if(controller.value.position == controller.value.duration) {
           controller.dispose();
           setState(() {
-            controller = VideoPlayerController.asset('assets/video/8.mp4');
+            controller = VideoPlayerController.asset('assets/video/loop.mp4');
             initializeVideoPlayerFuture = controller.initialize().then((_) {
               controller.play();
               controller.setLooping(true);
@@ -156,45 +155,12 @@ Future<void> _readCharacteristic() async {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: GestureDetector(
-            // Agrega GestureDetector para detectar gestos en el widget VideoPlayer
-            onLongPress: () async {
-              // ignore: use_build_context_synchronously
-              Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => const Start(),
-              ),
-        (route) => false);
-            },
-            child: FutureBuilder(
-              future: initializeVideoPlayerFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  // Una vez que el controlador de video esté inicializado, muestra el video
-                  return AspectRatio(
-                    aspectRatio: controller.value.aspectRatio,
-                    child: VideoPlayer(controller),
-                  );
-                } else {
-                  // Mientras se inicializa el controlador de video, muestra un indicador de carga
-                  return const Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 200, // Establece el tamaño deseado del CircularProgressIndicator
-                          height: 200, // Establece el tamaño deseado del CircularProgressIndicator
-                          child: CircularProgressIndicator(
-                            strokeWidth: 15, // Ajusta el ancho del indicador circular
-                            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF00A897)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-              },
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: AspectRatio(
+              aspectRatio: controller.value.aspectRatio,
+              child: VideoPlayer(controller),
             ),
           ),
         ),
