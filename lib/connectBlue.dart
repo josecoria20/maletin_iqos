@@ -30,14 +30,14 @@ class _ConnectBlueState extends State<ConnectBlue> {
 
     // Comenzar el escaneo de dispositivos con el nombre 'Test2'
     await FlutterBluePlus.startScan(
-      withNames: ["Test2"],
+      withNames: ["ESP32IQOS"],
     );
 
     // Escuchar los resultados del escaneo
     scanSubscription = FlutterBluePlus.onScanResults.listen((results) async {
       for (ScanResult result in results) {
         // Los resultados del escaneo se filtran hasta encontrar el dispositivo
-        if (result.device.advName == 'Test2') {
+        if (result.device.advName == 'ESP32IQOS') {
           try {
             scanSubscription?.cancel();
             // Método para detener el escaneo
