@@ -24,7 +24,7 @@ class _VideoMainState extends State<VideoMain> {
   @override
   void initState() {
     // Inicializa el controlador de video y carga el video desde la ruta de los assets
-    controller = VideoPlayerController.asset('assets/video/loop.mp4');
+    controller = VideoPlayerController.asset('assets/video/loopNuevo.mp4');
     initializeVideoPlayerFuture = controller.initialize().then((_) {
       controller.play();
       controller.setLooping(true);
@@ -97,7 +97,7 @@ Future<void> _readCharacteristic() async {
         if(controller.value.position == controller.value.duration) {
           controller.dispose();
           setState(() {
-            controller = VideoPlayerController.asset('assets/video/loop.mp4');
+            controller = VideoPlayerController.asset('assets/video/loopNuevo.mp4');
             initializeVideoPlayerFuture = controller.initialize().then((_) {
               controller.play();
               controller.setLooping(true);
@@ -132,7 +132,7 @@ Future<void> _readCharacteristic() async {
         if(controller.value.position == controller.value.duration) {
           controller.dispose();
           setState(() {
-            controller = VideoPlayerController.asset('assets/video/loop.mp4');
+            controller = VideoPlayerController.asset('assets/video/loopNuevo.mp4');
             initializeVideoPlayerFuture = controller.initialize().then((_) {
               controller.play();
               controller.setLooping(true);
