@@ -1,12 +1,16 @@
 # Digital Display Bar
 
-Este es un proyecto que consta de un circuito con sensores resistivos de fuerza, conectados a un módulo ESP32 y este a su vez se conecta vía Bluetooth a una app móvil. 
-Su función es cambiar de video, cuando se deje de hacer presión en los sensores.
+## Descripción
+La aplicación Flutter **maletin_iqos** escanea dispositivos BLE cercanos, se conecta a un módulo ESP-32 a través de BLE y envia apuntadores para cambiar de contenido digital según los parámetros enviados
 
-## Getting Started
-En la carpeta ESP32, se encuentra el .ino para programar el módulo ESP32
+## USO 
 
-### Librerias flutter utilizadas
-cupertino_icons
-flutter_blue_plus
-video_player
+1. Escanea dispositivos BLE cercanos
+2. Conexión automática al módulo ESP-32
+3. Cambio de contenido multimedia dependiendo los parámetros recibidos
+
+## Librerias flutter utilizadas
+
+* cupertino_icons
+* flutter_blue_plus
+* video_player
