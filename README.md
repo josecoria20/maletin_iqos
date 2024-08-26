@@ -1,6 +1,7 @@
-# maletin_iqos
+# Digital DIsplay Bar
 
-A new Flutter project.
+Este es un proyecto que consta de un circuito con sensores resistivos de fuerza, conectados a un módulo ESP32 y este a su vez se conecta vía Bluetooth a una app móvil. 
+Su función es cambiar de video, cuando se deje de hacer presión en los sensores.
 
 ## Getting Started
 
