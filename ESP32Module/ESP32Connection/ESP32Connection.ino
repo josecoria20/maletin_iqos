@@ -2,7 +2,7 @@
 #include <ArduinoBLE.h> //Libreria de Bluetoooth 5.0
 
 #define L_BLE      2
-int fsrAnalogPin1 = 33;
+int fsrAnalogPin1 = 32;
 int fsrAnalogPin2 = 34;
 int fsrReading1;
 int fsrReading2;
@@ -123,7 +123,7 @@ void iniciarBLE() {
     Serial.println("Iniciación del módulo BLE fallida");
     while(1);
   }
-  BLE.setLocalName("Test2"); // Se le asigna un nombre al dispositivo periferico 
+  BLE.setLocalName("ESP32IQOS"); // Se le asigna un nombre al dispositivo periferico 
   BLE.setAdvertisedService(ledService); // Se le asignan los servicios correspondientes
   ledService.addCharacteristic(switchCharacteristic); // Agrega la característica al servicio
   BLE.addService(ledService); // Agregar el servicio
